@@ -1,0 +1,89 @@
+body {
+	/* background-image: url('/wallpaper.jpg');
+	background-position: center center;
+	background-size: cover;
+	overflow:hidden; */
+
+	overflow:hidden;
+	font-family: Helvetica, Arial, Sans-Serif;
+	font-size: 16px;
+}
+
+#border {
+	position: fixed;
+	/* box-shadow: inset rgba(0, 0, 0, .2) 0 0 30px 15px; */
+		/* inset rgba(0, 0, 0, 0.1) 0 0 0 5px,
+		inset rgba(0, 0, 0, 0.1) 0 0 0 1px,
+		inset rgba(0, 0, 0, 0.1) 0 0 0 10px,
+		inset rgba(0, 0, 0, 0.1) 0 0 0 11px,
+		inset rgba(0, 0, 0, 0.1) 0 0 0 16px,
+		inset rgba(0, 0, 0, 0.1) 0 0 0 17px,
+		inset rgba(0, 0, 0, 0.1) 0 0 0 22px,
+		inset rgba(0, 0, 0, 0.1) 0 0 0 23px; */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+}
+
+#background {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow:hidden;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+	display: inline-block;
+	padding: 2px;
+	border-radius: 2px;
+}
+
+a:hover, a:focus {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+a:focus, a:active {
+	outline: none;
+}
+
+a:visited {
+	color: black;
+}
+
+#container {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	margin-top: 40vh;
+}
+
+.cat {
+	background: rgba(255, 255, 255, 0.6);
+	display: flex;
+	flex-direction: column;
+	min-width: 200px;
+	padding: 5px;
+	border-radius: 2px;
+	position: relative;
+	margin: 10px;
+}
+
+.cat-name {
+	position: absolute;
+	top: -1em;
+	left: 0;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+#clock {
+	color: white;
+	display: block;
+	z-index: 10;
+}
