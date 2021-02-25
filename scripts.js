@@ -1,35 +1,56 @@
 // Define links
 let links = [
   {
-    name: "viacom",
+    name: "cheddar",
     link: [
-      { name: "email", link: "http://owa.viacom.com/" },
       {
-        name: "jira",
-        link: "https://jira.mtvi.com/secure/RapidBoard.jspa?rapidView=1516"
+        name: "email",
+        link: "https://mail.google.com/mail/u/3/"
       },
       {
-        name: "stash",
-        link: "https://stash.mtvi.com/projects/RMP/repos/rmp-web/browse"
+        name: "github",
+        link: "https://github.com/cheddartv/rmp-client"
       },
       {
-        name: "jenkins qa",
+        name: "clubhouse",
+        link: "https://app.clubhouse.io/cheddar/stories/"
+      },
+      {
+        name: "segment",
+        link: "https://app.segment.com/cheddartv/overview"
+      },
+      {
+        name: "jenkins",
+        link: "https://ci.ratemyprofessors.com/"
+      },
+      {
+        name: "prod",
+        link: "https://www.ratemyprofessors.com/"
+      },
+      {
+        name: "staging",
+        link: "https://staging.ratemyprofessors.com/"
+      },
+      {
+        name: "dev",
+        link: "https://dev.ratemyprofessors.com/"
+      },
+      {
+        name: "staging admin",
+        link: "https://admin-staging.ratemyprofessors.com/admin/index.jsp"
+      },
+      {
+        name: "prod admin",
+        link: "https://admin-production.ratemyprofessors.com/admin/index.jsp"
+      },
+      {
+        name: "analytics",
         link:
-          "https://stage.build.viacom.com/view/Web%20RMP/job/relaunch-rmp-web-qa-git-2-java-7/"
+          "https://analytics.google.com/analytics/web/#/report-home/a130629720w190066860p186323767"
       },
       {
-        name: "jenkins release",
-        link:
-          "https://stage.build.viacom.com/view/Web%20RMP/job/draft-relaunch-rmp-app-prod-git-2-java-7-latest-web/"
-      },
-      {
-        name: "release instructions",
-        link:
-          "https://gist.github.com/konamacona/7df72c0cca41531bd50e4162a43a5537"
-      },
-      {
-        name: "qa admin",
-        link: "http://admin.ratemyprofessors-q.mtvi.com/admin/"
+        name: "guru",
+        link: "https://app.getguru.com/dashboard"
       }
     ]
   },
@@ -39,6 +60,10 @@ let links = [
       { name: "email", link: "https://mail.google.com/mail/u/0/#inbox" },
       { name: "drive", link: "https://drive.google.com/drive/u/0/" },
       { name: "jira", link: "https://jira.redspace.com/secure/Dashboard.jspa" },
+      {
+        name: "tempo",
+        link: "https://jira.redspace.com/secure/Tempo.jspa#/my-work/timesheet"
+      },
       { name: "stash", link: "https://stash.redspace.com/dashboard" },
       { name: "trello", link: "https://trello.com/b/RLVQoQvc/work" },
       {
@@ -67,7 +92,8 @@ let links = [
     link: [
       { name: "email", link: "https://mail.google.com/mail/u/1/#inbox" },
       { name: "drive", link: "https://drive.google.com/drive/u/1/" },
-      { name: "trello", link: "https://trello.com/b/lyNF9jQj/life" },
+      { name: "keep", link: "https://keep.google.com/u/1/" },
+      { name: "prose", link: "http://prose.io/#konamacona" },
       { name: "hacker news", link: "https://news.ycombinator.com/" },
       { name: "reddit", link: "https://reddit.com" },
       { name: "twitter", link: "https://tweetdeck.twitter.com/" },
@@ -105,6 +131,8 @@ function processLink(link) {
 	`;
 }
 
+const monitorWidths = [1280, 1920, 2560, 3840, 4320];
+
 const fixBackgroundSize = () => {
   console.log("fix");
 
@@ -122,38 +150,58 @@ const fixBackgroundSize = () => {
   let imageAspectRatio = imageWidth / imageHeight;
 
   // Account for multi monitor
-  while (xOffset < 0) {
-    xOffset += windowWidth;
+  // TODO: More here
+  for (let i = 0; xOffset < 0 && i < monitorWidths.length; i++) {
+    if (xOffset + monitorWidths[i] > 0) {
+      xOffset += monitorWidths[i];
+      console.log("addition chose", monitorWidths[i], xOffset);
+      break;
+    }
+  }
+  for (let i = monitorWidths.length - 1; xOffset > windowWidth && i >= 0; i--) {
+    if (
+      xOffset - monitorWidths[i] < windowWidth &&
+      xOffset - monitorWidths[i] > 0
+    ) {
+      xOffset -= monitorWidths[i];
+      console.log("subtraction chose", monitorWidths[i], xOffset);
+      break;
+    }
   }
 
   let size = "";
 
   // Figure out hows it's being displayed as a wallpaper
-  let ratioDiff = imageAspectRatio / aspectRatio;
-  // console.log("ratioDiff " + ratioDiff);
-  if (ratioDiff > 1) {
-    // wallpaper wider
-    // have to account for clipping done by os for wallpaper
+  // let ratioDiff = imageAspectRatio / aspectRatio;
+  // // console.log("ratioDiff " + ratioDiff);
+  // if (ratioDiff > 1) {
+  //   console.log("image is wider than window");
 
-    // console.log(imageWidth - windowWidth);
-    xOffset += (imageWidth - windowWidth) / 2 - 25; // 25 is a HACK for my default res // TODO
+  //   // wallpaper wider
+  //   // have to account for clipping done by os for wallpaper
 
-    //default offset
-    // 20
-    //1680 -> 240
-    // wdiff: 220px
-    // expected: 120
-    // actual: 95
-    //1440  -> 480
-    // wdiff: 480px
-    // expected: 240px
-    // actual: 175px
-  } else if (ratioDiff < 1) {
-    // wallpaper taller
-  } else {
-    // same aspect ratio
-    // do nothing
-  }
+  //   // console.log(imageWidth - windowWidth);
+  //   // xOffset += (imageWidth - windowWidth) / 2 - 25; // 25 is a HACK for my default res // TODO
+
+  //   //default offset
+  //   // 20
+  //   //1680 -> 240
+  //   // wdiff: 220px
+  //   // expected: 120
+  //   // actual: 95
+  //   //1440  -> 480
+  //   // wdiff: 480px
+  //   // expected: 240px
+  //   // actual: 175px
+  // } else if (ratioDiff < 1) {
+  //   // wallpaper taller
+
+  //   console.log("image is taller than window");
+  // } else {
+  //   console.log("image is same aspect");
+  //   // same aspect ratio
+  //   // do nothing
+  // }
 
   // Invert the offsets
   xOffset *= -1;
@@ -163,7 +211,10 @@ const fixBackgroundSize = () => {
   xOffset = Math.min(0, xOffset);
   yOffset = Math.min(0, yOffset);
 
-  // // Similarly, don't offset negative enough to clip the image
+  // Don't offset too negative, also avoids the white bar
+  xOffset = Math.max(xOffset, -window.innerWidth - imageWidth);
+  yOffset = Math.max(yOffset, window.innerHeight - windowHeight);
+  // console.log("max", yOffset, window.innerHeight - windowHeight);
 
   // console.log(imageHeight, imageHeight + yOffset, window.innerHeight);
   // console.log(imageWidth, imageWidth + xOffset, window.innerWidth);
@@ -171,14 +222,9 @@ const fixBackgroundSize = () => {
   // if ((imageHeight + yOffset) * -1 < windowHeight) {
   //   yOffset = 0;
   // }
-  if ((imageWidth + xOffset) * -1 < windowWidth) {
-    xOffset = 0;
-  }
-
-  // document.body.setAttribute('style', `
-  // 	background-size: ${w}px ${h}px;
-  // 	background-position: ${xOffset} ${yOffset}
-  // `);
+  // if ((imageWidth + xOffset) * -1 < windowWidth) {
+  //   xOffset = 0;
+  // }
 
   i.setAttribute("height", `${windowHeight}px`);
   i.setAttribute(
@@ -194,7 +240,8 @@ const fixBackgroundSize = () => {
   // 	screen: ${window.screen.width}x${window.screen.height}
   // 	window pos: ${window.screenX}x${window.screenY}
   // 	inner size: ${window.innerWidth}x${window.innerHeight}
-  // 	outer size: ${window.outerWidth}x${window.outerHeight}
+  //   outer size: ${window.outerWidth}x${window.outerHeight}
+  //   offsets: ${xOffset} ${yOffset}
   // `);
 
   // console.log(`
@@ -203,7 +250,7 @@ const fixBackgroundSize = () => {
   // `);
 };
 
-window.onload = function () {
+window.onload = function() {
   // populate links
   document.getElementById("container").innerHTML = processLink(links);
 
@@ -212,7 +259,7 @@ window.onload = function () {
     setTimeout(fixBackgroundSize, 50);
   });
 
-  var clock = document.getElementById('clock');
+  var clock = document.getElementById("clock");
   setTime(clock);
 };
 
@@ -229,6 +276,6 @@ function setTime(clock) {
   var h = d.getHours().toString();
   var m = d.getMinutes().toString();
   var s = d.getSeconds().toString();
-  clock.innerHTML = `${h}:${leftPad(m, 2, '0')}:${leftPad(s, 2, 0)}`
+  clock.innerHTML = `${h}:${leftPad(m, 2, "0")}:${leftPad(s, 2, 0)}`;
   requestAnimationFrame(() => setTime(clock));
 }
