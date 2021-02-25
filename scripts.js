@@ -1,6 +1,7 @@
 // Define links
 let links = [
   {
+    // Cheddar
     name: "cheddar",
     link: [
       {
@@ -9,7 +10,7 @@ let links = [
       },
       {
         name: "github",
-        link: "https://github.com/cheddartv/rmp-client"
+        link: "https://github.com/cheddartv"
       },
       {
         name: "clubhouse",
@@ -22,6 +23,10 @@ let links = [
       {
         name: "jenkins",
         link: "https://ci.ratemyprofessors.com/"
+      },
+      {
+        name: "circle",
+        link: "https://circleci.com/gh/cheddartv/rmp-client"
       },
       {
         name: "prod",
@@ -49,12 +54,26 @@ let links = [
           "https://analytics.google.com/analytics/web/#/report-home/a130629720w190066860p186323767"
       },
       {
-        name: "guru",
-        link: "https://app.getguru.com/dashboard"
+        name: "confluence",
+        link: "https://cheddartv.atlassian.net/wiki/spaces/R/overview"
+      },
+      {
+        name: "optimize",
+        link: "https://optimize.google.com/optimize/home/?hl=en-US#/accounts"
+      },
+      {
+        name: "scalyr",
+        link:
+          "https://www.scalyr.com/logStart?teamToken=WRthgSwi8ZSS3ZWwCy4IEA--"
+      },
+      {
+        name: "sentry",
+        link: "https://sentry.io/organizations/cheddar/issues/?project=1420012"
       }
     ]
   },
   {
+    // REDspace
     name: "redspace",
     link: [
       { name: "email", link: "https://mail.google.com/mail/u/0/#inbox" },
@@ -64,8 +83,17 @@ let links = [
         name: "tempo",
         link: "https://jira.redspace.com/secure/Tempo.jspa#/my-work/timesheet"
       },
+      {
+        name: "tech share board",
+        link: "https://jira.redspace.com/secure/RapidBoard.jspa?rapidView=689&projectKey=WTS"
+      },
+      {
+        name: "timesheet approvals",
+        link: "https://jira.redspace.com/secure/Tempo.jspa#/teams/team/108/approvals"
+      },
+      
       { name: "stash", link: "https://stash.redspace.com/dashboard" },
-      { name: "trello", link: "https://trello.com/b/RLVQoQvc/work" },
+      // { name: "trello", link: "https://trello.com/b/RLVQoQvc/work" },
       {
         name: "calender",
         link: "https://calendar.google.com/calendar/render#main_7"
@@ -75,19 +103,68 @@ let links = [
       {
         name: "payworks",
         link:
-          "https://payroll.payworks.ca/Loginscreen.asp?err=loggedoff&LangID="
+        "https://payroll.payworks.ca/Loginscreen.asp?err=loggedoff&LangID="
       },
       {
         name: "small improvements",
         link: "https://redspace.small-improvements.com/app/home"
       },
       {
-        name: "ip whitelist",
-        link: "https://intranet.redspace.com/it/viacom-ip-whitelist/"
-      }
+        name: "prosaris stash",
+        link: "https://stash.redspace.com/projects/PROS/repos/prosaris-leak-finder-dashboard/"
+      },
+      // {
+      //   name: "ip whitelist",
+      //   link: "https://intranet.redspace.com/it/viacom-ip-whitelist/"
+      // }
     ]
   },
+  // {
+  //   // Viacom
+  //   name: "viacom",
+  //   link: [
+  //     {
+  //       name: "local",
+  //       link: "http://localhost:8001"
+  //     },
+  //     {
+  //       name: "local admin",
+  //       link: "http://localhost:8001/wp-login.php"
+  //     },
+  //     {
+  //       name: "REDspace stash",
+  //       link:
+  //         "https://stash.redspace.com/projects/NICK/repos/noggin-v2/browse?at=refs%2Fheads%2Fqa"
+  //     },
+  //     {
+  //       name: "jira",
+  //       link:
+  //         "https://jira.mtvi.com/secure/RapidBoard.jspa?rapidView=3644&projectKey=NW2&view=planning.nodetail&issueLimit=100"
+  //     },
+  //     {
+  //       name: "jenkins",
+  //       link: "https://build.viacom.com/job/Wordpress/job/Noggin"
+  //     },
+  //     {
+  //       name: "prod",
+  //       link: "https://www.noggin.com"
+  //     },
+  //     {
+  //       name: "staging",
+  //       link: "http://www.noggin-q.mtvi.com"
+  //     },
+  //     {
+  //       name: "dev",
+  //       link: "http://www.noggin-d.mtvi.com"
+  //     },
+  //     {
+  //       name: "confluence",
+  //       link: "https://confluence.mtvi.com/display/KIDSANDFAMILY/NOGGIN"
+  //     }
+  //   ]
+  // },
   {
+    // Other
     name: "other",
     link: [
       { name: "email", link: "https://mail.google.com/mail/u/1/#inbox" },
@@ -100,7 +177,8 @@ let links = [
       { name: "bgg", link: "https://www.boardgamegeek.com/" },
       { name: "sheets", link: "https://docs.google.com/spreadsheets/u/1/" },
       { name: "docs", link: "https://docs.google.com/document/u/1/" },
-      { name: "reader", link: "https://www.inoreader.com/" }
+      { name: "reader", link: "https://www.inoreader.com/" },
+      { name: "airbnb", link: "https://www.airbnb.ca/dashboard" }
     ]
   }
 ];
