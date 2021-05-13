@@ -69,7 +69,7 @@ let links = [
       {
         name: "sentry",
         link: "https://sentry.io/organizations/cheddar/issues/?project=1420012"
-      }
+      },
     ]
   },
   {
@@ -113,6 +113,10 @@ let links = [
         name: "prosaris stash",
         link: "https://stash.redspace.com/projects/PROS/repos/prosaris-leak-finder-dashboard/"
       },
+      {
+        name: 'recruiter box',
+        link: 'https://redspace.recruiterbox.com/app/#dashboard/type:review_pending_on_me'
+      }
       // {
       //   name: "ip whitelist",
       //   link: "https://intranet.redspace.com/it/viacom-ip-whitelist/"
